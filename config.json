@@ -1,0 +1,12 @@
+{
+"url-backend": "127.0.0.1",
+"port": 9999,
+
+  "data-db-conection": "mongodb+srv://dbnataliarq:carmelina@cluster0.voyna7v.mongodb.net/bd-resultados-regsitraduria?retryWrites=true&w=majority",
+  "name-db":"bd-resultados-regsitraduria"
+}
+
+
+
+
+
