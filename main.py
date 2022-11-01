@@ -4,11 +4,11 @@ from flask import request
 from flask_cors import CORS
 import json
 from waitress import serve
-from Controladores.ControladorMesa import ControladorMesa
+from Controladores.ControladorCandidato import ControladorCandidatos
 
 app=Flask(__name__)
 cors = CORS(app)
-micontroladorMesa = ControladorMesa()
+micontroladorCandidato = ControladorCandidatos()
 
 
 def loadFileConfig():
@@ -20,27 +20,27 @@ def test():
     json = {}
     json["message"]="Server running ..."
     return jsonify(json)
-@app.route("/mesas",methods=['GET'])
-def getMesa():
-    json=micontroladorMesa.index()
+@app.route("/candidatos",methods=['GET'])
+def getCandidatos():
+    json=micontroladorCandidato.index()
     return jsonify(json)
-@app.route("/mesas",methods=['POST'])
-def crearMesa():
+@app.route("/candidatos/",methods=['POST'])
+def crearCandidato():
     data = request.get_json()
-    json=micontroladorMesa.create(data)
+    json = micontroladorCandidato.create(data)
     return jsonify(json)
-@app.route("/mesas/<string:id>",methods=['GET'])
-def getMesas(id):
-    json=micontroladorMesa.show(id)
+@app.route("/candidatos/<string:id>",methods=['GET'])
+def getCandidato(id):
+    json=micontroladorCandidato.show(id)
     return jsonify(json)
-@app.route("/mesas/<string:id>",methods=['PUT'])
-def modificarMesa(id):
+@app.route("/candidatos/<string:id>",methods=['PUT'])
+def modificarCandidatos(id):
     data = request.get_json()
-    json=micontroladorMesa.update(id,data)
+    json=micontroladorCandidato.update(id,data)
     return jsonify(json)
-@app.route("/mesas/<string:id>",methods=['DELETE'])
-def eliminarUsuario(id):
-    json=micontroladorMesa.delete(id)
+@app.route("/candidatos/<string:id>",methods=['DELETE'])
+def eliminarCandidatos(id):
+    json=micontroladorCandidato.delete(id)
     return jsonify(json)
 
 
